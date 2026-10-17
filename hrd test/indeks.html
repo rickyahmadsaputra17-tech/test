@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Bertahap (Orientasi & PK)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 min-h-screen flex flex-col justify-between text-slate-100">
+
+    <header class="w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md">UJ</div>
+            <div>
+                <h1 class="font-bold text-slate-100 leading-tight">Ujian Online Bertahap</h1>
+                <p class="text-xs text-slate-400">Orientasi (25 Soal) & PK (25 Soal)</p>
+            </div>
+        </div>
+        <div class="text-xs font-medium px-3 py-1.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/50 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sistem Aktif
+        </div>
+    </header>
+
+    <main class="flex-1 flex items-center justify-center p-4 sm:p-6">
+        <div class="w-full max-w-2xl bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-800 overflow-hidden">
+            
+            <!-- STEP 1: LOGIN TOKEN -->
+            <div id="step-login" class="p-8 sm:p-10">
+                <div class="mb-6">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950 px-3 py-1 rounded-full border border-indigo-800/50">Langkah 1 dari 5</span>
+                    <h2 class="text-2xl font-bold text-white mt-3">Autentikasi Token Ujian</h2>
+                    <p class="text-slate-400 text-sm mt-1">Masukkan kode token unik Anda untuk mulai mengakses materi.</p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1.5">Kode Token</label>
+                        <input type="text" id="token-input" placeholder="Contoh: KODE-001" autocomplete="off"
+                            class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
+                        <div id="error-msg" class="hidden mt-2 text-xs text-rose-400 font-medium bg-rose-950/50 border border-rose-900 p-2.5 rounded-lg"></div>
+                    </div>
+                    <button onclick="cekToken()" id="btn-login" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg transition cursor-pointer">Masuk ke Materi Orientasi</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: MATERI 1 (ORIENTASI) -->
+            <div id="step-materi-1" class="hidden p-8 sm:p-10">
+                 
+<div class="mb-6 text-center">
+    <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950 px-3 py-1 rounded-full border border-indigo-800/50">
+        Langkah 2 dari 5
+    </span>
+
+    <h2 class="text-2xl font-bold text-white mt-3">
+        Materi Ujian Orientasi
+    </h2>
+</div>
+
+                <div class="mb-6">
+                    <label class="block text-xs font-medium text-slate-400 mb-2">Daftar Modul & Materi Pembelajaran:</label>
+                    <div class="space-y-3 max-h-96 overflow-y-auto pr-1">
+                        
+                        <!-- Materi 1: File Dokumen -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center justify-between gap-3 hover:border-slate-700 transition">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center shrink-0 font-bold text-[10px]">PDF</div>
+                                <div class="truncate">
+                                    <p class="text-xs font-medium text-slate-200 truncate">Materi Orientation</p>
+                                    <p class="text-[10px] text-slate-500">File Dokumen Materi 1</p>
+                                </div>
+                            </div>
+                            <a href="Materi/1.docx" target="_blank" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold rounded-lg shadow-md transition shrink-0 flex items-center gap-1 cursor-pointer">Unduh</a>
+                        </div>
+
+                        <!-- Materi 2: File Dokumen -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center justify-between gap-3 hover:border-slate-700 transition">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center shrink-0 font-bold text-[10px]">PPTX</div>
+                                <div class="truncate">
+                                    <p class="text-xs font-medium text-slate-200 truncate">Materi Orientation</p>
+                                    <p class="text-[10px] text-slate-500">File Dokumen Materi 2</p>
+                                </div>
+                            </div>
+                            <a href="Materi/2.pptx" target="_blank" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold rounded-lg shadow-md transition shrink-0 flex items-center gap-1 cursor-pointer">Unduh</a>
+                        </div>
+
+                        <!-- Materi 3: Video MP4 (Pemutar Video Langsung) -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-7 h-7 rounded-lg bg-rose-600/20 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0 font-bold text-[10px]">MP4</div>
+                                <div>
+                                    <p class="text-xs font-medium text-slate-200">Materi_3_Video_Pembahasan.mp4</p>
+                                    <p class="text-[10px] text-slate-500">Video Player Langsung</p>
+                                </div>
+                            </div>
+                            <div class="relative w-full overflow-hidden rounded-lg bg-slate-900 border border-slate-800">
+                                <video controls class="w-full aspect-video">
+                                    <source src="Materi/3. MPOIN - All Water Tank.mp4" type="video/mp4">
+                                    Browser Anda tidak mendukung pemutaran video HTML5.
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Materi 4: File Dokumen -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex items-center justify-between gap-3 hover:border-slate-700 transition">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0 font-bold text-[10px]">DOC</div>
+                                <div class="truncate">
+                                    <p class="text-xs font-medium text-slate-200 truncate">Materi_4_Ringkasan.docx</p>
+                                    <p class="text-[10px] text-slate-500">File Dokumen Materi 4</p>
+                                </div>
+                            </div>
+                            <a href="https://link-file-4.com" target="_blank" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold rounded-lg shadow-md transition shrink-0 flex items-center gap-1 cursor-pointer">Unduh</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button onclick="lanjutKeSoal1()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg transition cursor-pointer"> Mulai Soal Orientasi </button>
+            </div>
+
+            <!-- STEP 3: SOAL 1 (ORIENTASI - 25 SOAL) -->
+           <!-- STEP 3: SOAL 1 (ORIENTASI - 25 SOAL) -->
+            <div id="step-soal-1" class="hidden p-8 sm:p-10">
+                <div class="mb-6">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950 px-3 py-1 rounded-full border border-indigo-800/50">Langkah 3 dari 5</span>
+                    <h2 class="text-2xl font-bold text-white mt-3">Ujian Bagian 1: Orientasi (25 Soal)</h2>
+                    <p class="text-slate-400 text-sm mt-1">Jawablah seluruh pertanyaan orientasi di bawah ini dengan teliti.</p>
+                </div>
+
+                <!-- Daftar Soal 1 s.d. 25 -->
+                <div class="space-y-6 max-h-[460px] overflow-y-auto pr-2 mb-6">
+
+                    <!-- Soal 1 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">1. Apa yang menjadi ciri khas utama MPOIN dibandingkan sekadar perusahaan biasa?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal1" value="A"> A. Menjadi perusahaan dengan target keuntungan yang jelas</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal1" value="B"> B. Gerakan pejuang solusi nyata</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal1" value="C"> C. Memberikan produk yang lebih murah daripada pesaing</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal1" value="D"> D. Fokus pada kepuasan investor</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">2. Visi besar MPOIN adalah…</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal2" value="A"> A. Solusi nyata, kebanggaan, dan legacy lintas generasi</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal2" value="B"> B. Menjadi perusahaan dengan jaringan terluas di Indonesia</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal2" value="C"> C. Menghadirkan produk yang kompetitif di pasar global</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal2" value="D"> D. Mengutamakan efisiensi operasional dalam setiap lini bisnis</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">3. Yang dimaksud dengan “Kita bekerja dengan rasa memiliki” adalah…</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal3" value="A"> A. Menjalankan pekerjaan sesuai kontrak kerja</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal3" value="B"> B. Menjadi karyawan yang patuh pada aturan perusahaan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal3" value="C"> C. Menganggap MPOIN seperti perusahaan sendiri</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal3" value="D"> D. Menjalankan tanggung jawab dengan disiplin tinggi</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">4. Apa yang ingin dicapai MPOIN melalui setiap produk yang dibuat?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal4" value="A"> A. Menjadi produk yang bisa bersaing di pasar internasional</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal4" value="B"> B. Memberikan nilai tambah pada pemegang saham</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal4" value="C"> C. Menghasilkan keuntungan maksimal dari setiap inovasi</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal4" value="D"> D. Jawaban nyata bagi kebutuhan masyarakat</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">5. Siapa yang dianggap membangun perusahaan besar menurut materi MPOIN?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal5" value="A"> A. Pemimpin yang mampu membuat keputusan besar</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal5" value="B"> B. Orang-orang dengan pengalaman panjang</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal5" value="C"> C. Orang-orang dengan visi yang sama</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal5" value="D"> D. Tim dengan kemampuan teknis tinggi</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 6 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">6. Tiga penekanan utama yang ditekankan Visi MPOIN terkait dampak dan jangka waktu adalah...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal6" value="A"> A. Solusi nyata, kebanggaan, dan legacy lintas generasi</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal6" value="B"> B. Inovasi produk, efisiensi tim, dan pertumbuhan bisnis jangka pendek</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal6" value="C"> C. Skala pasar, loyalitas pelanggan, dan ekspansi regional</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal6" value="D"> D. Kualitas layanan, penguasaan pasar, dan keuntungan maksimal</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 7 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">7. Indikator keberhasilan visi MPOIN yang diharapkan muncul dari masyarakat adalah sebuah pernyataan yang berfokus pada...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal7" value="A"> A. “Hidup saya lebih baik sejak pakai MPOIN”</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal7" value="B"> B. "MPOIN punya iklan yang menarik"</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal7" value="C"> C. "MPOIN lebih murah dibanding pesaing"</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal7" value="D"> D. “Saya suka desain MPOIN”</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 8 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">8. Misi MPOIN dalam menjaga kualitas produk diwujudkan secara spesifik melalui komitmen terhadap aspek-aspek berikut...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal8" value="A"> A. Memproduksi barang dengan biaya serendah mungkin</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal8" value="B"> B. Menyesuaikan produk dengan tren pasar</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal8" value="C"> C. Menyediakan layanan purna jual</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal8" value="D"> D. Produk awet, kuat, dan aman tanpa kompromi</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 9 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">9. Contoh konkret MPOIN Drain Tank dengan solusi kuras otomatis merupakan manifestasi langsung dari misi MPOIN untuk...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal9" value="A"> A. Meningkatkan efisiensi distribusi dan logistik produk</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal9" value="B"> B. Membangun brand awareness melalui teknologi terkini</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal9" value="C"> C. Menawarkan desain produk yang menarik perhatian konsumen</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal9" value="D"> D. Menyediakan 'Produk Solusi Nyata' dengan inovasi yang menjawab masalah di lapangan.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 10 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">10. Pemimpin seperti apa yang ingin dicetak oleh MPOIN sesuai dengan penekanan budaya perusahaan?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal10" value="A"> A. Mampu bekerja sama dengan baik dalam tim</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal10" value="B"> B. Berorientasi pada target pencapaian perusahaan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal10" value="C"> C. Berorientasi pada hasil semata</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal10" value="D"> D. Berintegritas dan berjiwa pejuang</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 11 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">11. Nilai inti “Focus” dalam MPOIN diartikan sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal11" value="A"> A. Membagi perhatian ke semua hal agar seimbang</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal11" value="B"> B. Memprioritaskan pekerjaan yang paling mudah</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal11" value="C"> C. Melakukan banyak tugas dalam waktu singkat</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal11" value="D"> D. Mengelola energi dan sumber daya agar tidak terpecah pada tujuan sekunder.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 12 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">12. Agility dalam core values MPOIN berarti kemampuan untuk...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal12" value="A"> A. Gerak cepat saat terdeteksi adanya masalah</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal12" value="B"> B. Menyelesaikan pekerjaan dengan sabar dan perlahan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal12" value="C"> C. Menunggu arahan sebelum bertindak</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal12" value="D"> D. Menghindari risiko dengan cara berhati-hati</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 13 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">13. Rasa Memiliki di MPOIN diwujudkan melalui</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal13" value="A"> A. Selalu bertanya sebelum bertindak</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal13" value="B"> B. Fokus pada tugas individu saja</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal13" value="C"> C. Bekerja seolah MPOIN adalah perusahaan milik sendiri yang harus dijaga dan dibesarkan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal13" value="D"> D. Menunggu petunjuk dari atasan</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 14 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">14. Nilai inti excellence di MPOIN bermakna komitmen untuk...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal14" value="A"> A. Memberi yang terbaik, memastikan kualitas hasil yang rapi, dan standar yang tinggi.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal14" value="B"> B. Memberi yang terbaik di posisi masing-masing</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal14" value="C"> C. Mengerjakan pekerjaan secepat mungkin</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal14" value="D"> D. Menyelesaikan pekerjaan sesuai standar minimal</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 15 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">15. Pilar utama yang menjadi penekanan integritas di MPOIN adalah...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal15" value="A"> A. Patuh terhadap atasan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal15" value="B"> B. Fokus pada hasil, bukan proses</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal15" value="C"> C. Konsistensi, kejujuran, dan transparansi</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal15" value="D"> D. Menyesuaikan nilai pribadi dengan situasi</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 16 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">16. Ownership Mindset dalam budaya MPOIN paling tepat diartikan sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal16" value="A"> A. Selalu mengikuti instruksi atasan dengan disiplin</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal16" value="B"> B. Fokus pada tugas masing-masing saja</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal16" value="C"> C. Setiap orang merasa memiliki tanggung jawab penuh</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal16" value="D"> D. Memberikan pekerjaan sulit hanya kepada pimpinan</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 17 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">17. Budaya Problem Solver di MPOIN secara mendasar menekankan agar karyawan...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal17" value="A"> A. Melaporkan masalah kepada atasan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal17" value="B"> B. Mencari siapa yang bersalah</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal17" value="C"> C. Datang dengan solusi, bukan sekadar membawa masalah</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal17" value="D"> D. Menunggu tim lain menyelesaikan masalah</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 18 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">18. Mengapa teamwork ditekankan sebagai hal yang sangat penting di MPOIN?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal18" value="A"> A. Karena kita super-team, bukan superman</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal18" value="B"> B. Agar pekerjaan bisa dibagi rata</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal18" value="C"> C. Karena semua proyek butuh banyak orang</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal18" value="D"> D. Untuk mengurangi tanggung jawab individu</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 19 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">19. Makna dari Continuous Learning di MPOIN adalah...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal19" value="A"> A. Mengikuti pelatihan hanya saat diwajibkan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal19" value="B"> B. Belajar hanya jika ada masalah di pekerjaan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal19" value="C"> C. Bergantung pada pengalaman lama</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal19" value="D"> D. Mau terus belajar & berkembang</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 20 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">20. Salah satu ajaran Budaya MPOIN yang penting bagi setiap karyawan adalah sikap...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal20" value="A"> A. Menjual produk sebanyak-banyaknya</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal20" value="B"> B. Fokus pada karir pribadi</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal20" value="C"> C. Membandingkan produk dengan kompetitor</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal20" value="D"> D. Bangga dengan produk sendiri</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 21 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">21. Setiap individu yang bekerja di MPOIN secara khusus diidentifikasi dan disebut sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal21" value="A"> A. Pemilik Perusahaan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal21" value="B"> B. Agen perubahan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal21" value="C"> C. Mitra Kerja</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal21" value="D"> D. Duta MPOIN</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 22 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">22. Peran karyawan MPOIN memiliki cakupan yang lebih luas dari sekadar menjual produk, yaitu fokus pada...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal22" value="A"> A. Membawa cerita solusi ke masyarakat</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal22" value="B"> B. Mencari keuntungan sebanyak mungkin</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal22" value="C"> C. Mengikuti arahan atasan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal22" value="D"> D. Menjadi pengawas jalannya perusahaan</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 23 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">23. Salah satu komitmen utama yang harus dipegang teguh oleh setiap karyawan MPOIN adalah...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal23" value="A"> A. Menjaga nama baik MPOIN</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal23" value="B"> B. Menghindari kesalahan saat bekerja</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal23" value="C"> C. Menyelesaikan semua tugas tepat waktu</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal23" value="D"> D. Bekerja sesuai prosedur standar</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 24 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">24. Makna dari komitmen karyawan MPOIN untuk “menciptakan dampak nyata di lapangan” adalah...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal24" value="A"> A. Menyediakan produk dengan harga kompetitif</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal24" value="B"> B. Membuat laporan kegiatan yang terstruktur</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal24" value="C"> C. Membuat perubahan yang dirasakan masyarakat</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal24" value="D"> D. Menambah jumlah pelanggan setiap tahun</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 25 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">25. Tindakan membawa kebanggaan bagi keluarga dan bangsa merupakan bagian dari...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal25" value="A"> A. Bagian dari komitmen karyawan MPOIN</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal25" value="B"> B. Salah satu penekanan dalam Visi MPOIN (Solusi nyata, Kebanggaan, dan Legacy)</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal25" value="C"> C. Hasil akhir dari penerapan nilai 'Excellence' dan 'Integritas'.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal25" value="D"> D. Manifestasi dari Spirit Pejuang MPOIN.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 26 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">26. Manakah kombinasi yang paling tepat menjelaskan Spirit Pejuang MPOIN ?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="A"> A. Pencipta solusi, pejuang kebanggaan, pembawa legacy</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="B"> B. Pekerja keras dan loyal</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="C"> C. Penjual terbaik dan inovator</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="D"> D. Penggagas ide dan pelaksana cepat</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 27 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">27. Manifesto MPOIN menekankan bahwa hakikat produk yang dihasilkan adalah...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="A"> A. Solusi, bukan sekadar barang</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="B"> B. Alat promosi brand</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="C"> C. Sarana meningkatkan omzet</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="D"> D. Bukti kemajuan perusahaan</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 28 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">28. Manakah dari pernyataan berikut yang merupakan salah satu dari 10 Nilai Inti MPOIN?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal28" value="A"> A. Konsumen selalu nomor satu</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal28" value="B"> B. Berpikir Keluar dari Kapal (Out-of-the-Box Thinking).</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal28" value="C"> C. Mencegah, Bukan Mengobati (Prinsip Antisipasi).</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal28" value="D"> D. Meninggalkan kualitas produk</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 29 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">29. MPOIN menekankan pentingnya keuangan sehat sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal29" value="A"> A. Prasyarat untuk mencapai Brand Nomor 1 di Indonesia.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal29" value="B"> B. Cara untuk bertahan dan memastikan keberlangsungan bisnis dalam jangka panjang.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal29" value="C"> C. Cara untuk menciptakan dampak nyata dan legacy lintas generasi.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal29" value="D"> D. Bukti nyata dari Budaya Transparansi (Audit dan Keterbukaan).</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 30 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">30. Budaya transparansi di MPOIN diwujudkan melalui mekanisme...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal30" value="A"> A. Komitmen untuk selalu memberi yang terbaik, rapi, dan berkualitas (Excellence).</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal30" value="B"> B. Laporan keuangan yang 'sehat' sebagai cara untuk bertahan di pasar.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal30" value="C"> C. Audit dan keterbukaan informasi di semua lini, sebagai pilar dari nilai Integritas.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal30" value="D"> D. Penerapan 'Fakta, Data, Realita' sebagai dasar pengambilan keputusan.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 31 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">31. Prinsip budaya “Mencegah, Bukan Mengobati” paling akurat diartikan sebagai pernyataan mana?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal31" value="A"> A. Keuangan yang sehat adalah cara utama untuk mengantisipasi dan menghindari krisis ekonomi.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal31" value="B"> B. Menggunakan 'Fakta, Data, Realita' sebagai basis keputusan untuk meminimalisir kesalahan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal31" value="C"> C. Antisipasi dan pencegahan masalah sejak awal memiliki biaya dan dampak yang lebih rendah dibandingkan perbaikan pasca-kejadian.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal31" value="D"> D. Setiap karyawan harus datang dengan solusi (Problem Solver) sebelum masalah tersebut membesar.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 32 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">32. Prinsip "Spirit of Excellence" di MPOIN dimaknai sebagai tindakan...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal32" value="A"> A. Memberi yang terbaik di posisi masing-masing, sebagai cerminan diri perusahaan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal32" value="B"> B. Menerapkan 'Ownership Mindset' dalam mencapai target Brand Nomor 1.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal32" value="C"> C. Bekerja dengan semangat 'super-team' bukan 'superman' untuk hasil maksimal.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal32" value="D"> D. Selalu memberi yang terbaik, rapi, dan berkualitas tinggi dalam setiap pekerjaan.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 33 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">33. Tujuan dari prinsip “Berpikir Keluar dari Kapal” adalah untuk...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal33" value="A"> A. Menerapkan 'Agility' untuk merespons peluang baru yang datang dari luar pasar utama.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal33" value="B"> B. Melihat pekerjaan, proses, dan masalah yang dihadapi dari sudut pandang eksternal (pihak luar).</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal33" value="C"> C. Menjadi *Problem Solver* yang datang dengan solusi inovatif yang belum terpikirkan oleh tim internal.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal33" value="D"> D. Memastikan 'Continuous Learning' terjadi melalui perbandingan dengan praktik industri lain.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 34 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">34. Budaya “Pahami Kenapa, Bukan Sekadar Apa” bertujuan agar karyawan...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal34" value="A"> A. Menerapkan 'Continuous Learning' untuk terus menggali ilmu dan wawasan baru</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal34" value="B"> B. Menjadi pemimpin sejati yang memiliki visi yang sama dengan perusahaan</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal34" value="C"> C. Paham maksud, logika, dan alasan fundamental di balik fenomena atau tugas yang dikerjakan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal34" value="D"> D. Dapat mengarahkan energi pada tujuan utama perusahaan (Focus).</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 35 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">35. Penekanan pada “Fakta, Data, Realita” dalam pengambilan keputusan MPOIN menggarisbawahi pentingnya...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal35" value="A"> A. Bertindak cepat berdasarkan intuisi dan situasi mendesak.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal35" value="B"> B. Mengikuti praktik kerja lama yang dianggap sudah terbukti tanpa pengecekan ulang.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal35" value="C"> C. Data yang valid, informasi yang teruji, dan temuan nyata di lapangan sebagai dasar bertindak.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal35" value="D"> D. Menjadikan kecepatan pengambilan keputusan lebih penting daripada kelengkapan data.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 36 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">36. Apa yang ditetapkan sebagai "pondasi utama" yang harus dimiliki setiap karyawan sebelum menerapkan 10 Nilai Inti MPOIN?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal36" value="A"> A. Smart Distribution</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal36" value="B"> B. Integritas dan disiplin</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal36" value="C"> C. Customer First</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal36" value="D"> D. Smart person</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 37 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">37. Kriteria "Pemimpin sejati" di MPOIN adalah yang</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal37" value="A"> A. Memiliki jabatan tertinggi dan wewenang penuh dalam organisasi.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal37" value="B"> B. Mampu mencapai target tim secara konsisten dalam jangka pendek.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal37" value="C"> C. Memiliki pengalaman kerja paling lama dibanding anggota tim lain.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal37" value="D"> D. Punya visi yang sama dengan perusahaan</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 38 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">38. Apa yang menjadi dasar keputusan yang paling diutamakan di MPOIN?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal38" value="A"> A. Keputusan terutama diambil berdasarkan asumsi dan perkiraan tim.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal38" value="B"> B. Konsumen selalu nomor satu (Customer First).</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal38" value="C"> C. Kerja nyata di lapangan (temuan dan praktik), yang divalidasi dengan 'Fakta, Data, Realita'.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal38" value="D"> D. Menjadikan opini mayoritas dalam rapat sebagai penentu akhir keputusan.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 39 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">39. Setiap produk MPOIN yang diluncurkan atau keluar dari perusahaan membawa serta...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal39" value="A"> A. Nama baik perusahaan, yang merupakan cerminan kualitas dan Spirit of Excellence.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal39" value="B"> B. Tanggung jawab tim produksi terhadap hasil kerja mereka.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal39" value="C"> C. Nilai jual produk yang menentukan daya saing di pasar.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal39" value="D"> D. Identitas merek yang dibentuk melalui desain dan kemasan.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 40 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">40. Filosofi MPOIN mengenai pelayanan adalah bahwa pelayanan itu dipandang sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal40" value="A"> A. Proses pendukung agar aktivitas bisnis berjalan lancar.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal40" value="B"> B. Cermin siapa kita sebenarnya</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal40" value="C"> C. Alat untuk menjaga kepuasan konsumen dan reputasi perusahaan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal40" value="D"> D. Sarana untuk memenuhi ekspektasi konsumen sesuai kebutuhan pasar.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 41 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">41. Setiap tindakan dan keputusan yang dilakukan karyawan MPOIN dipandang sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal41" value="A"> A. Aktivitas kerja harian yang selesai ketika tugas sudah dilaksanakan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal41" value="B"> B. Keputusan situasional yang dampaknya hanya dirasakan saat ini.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal41" value="C"> C. Warisan (Legacy) yang akan dilihat dan dijadikan contoh oleh generasi berikutnya.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal41" value="D"> D. Tanggung jawab personal yang berakhir pada hasil pekerjaan individu.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 42 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">42. Perbedaan fundamental yang paling membedakan karyawan MPOIN dengan karyawan perusahaan biasa adalah bahwa mereka diidentifikasi sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal42" value="A"> A. Tenaga kerja profesional yang menjalankan tugas sebatas jobdesk saja.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal42" value="B"> B. Karyawan yang fokus pada pencapaian target kerja masing-masing.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal42" value="C"> C. Individu yang bekerja dengan loyalitas tinggi terhadap teman kerja.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal42" value="D"> D. Pejuang MPOIN yang memiliki komitmen dan semangat lebih untuk perusahaan.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 43 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">43. "Target akhir" yang menjadi tolak ukur sukses strategis MPOIN adalah menjadi...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal43" value="A"> A. Perusahaan yang dikenal memiliki budaya kerja kuat dan solid.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal43" value="B"> B. Perusahaan dengan pertumbuhan penjualan paling stabil setiap tahun.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal43" value="C"> C. Brand nomor 1 di Indonesia</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal43" value="D"> D. Perusahaan yang dipercaya oleh mitra dan distributor di berbagai wilayah.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 44 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">44. Prinsip “Customer First” dalam misi MPOIN diartikan sebagai...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal44" value="A"> A. Menjaga keseimbangan antara kepentingan konsumen dan efisiensi internal.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal44" value="B"> B. Memberikan perhatian kepada konsumen sesuai dengan segmentasi pasar.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal44" value="C"> C. Pelayanan (service) dipandang sebagai cermin siapa kita.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal44" value="D"> D. Konsumen sebagai prioritas nomor satu.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 45 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">45. Dalam sistem distribusi dan pelayanan MPOIN, fokus utamanya ditekankan pada...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal45" value="A"> A. Kiriman cepat, garansi jelas, dan after-sales nyata dan terimplementasi.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal45" value="B"> B. Penyeragaman prosedur kerja antar tim distribusi dan pelayanan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal45" value="C"> C. Pelayanan dipandang sebagai cermin siapa kita (Filosofi Pelayanan).</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal45" value="D"> D. Peningkatan laporan dan dokumentasi aktivitas distribusi.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 46 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">46. Istilah “Smart Manufacturing” dalam misi MPOIN secara spesifik berarti...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal46" value="A"> A. Proses produksi yang efisien, menerapkan otomatisasi, dan menjamin kualitas produk terbaik.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal46" value="B"> B. Mengatur jadwal produksi agar sesuai dengan target bulanan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal46" value="C"> C. Menyesuaikan kapasitas mesin dengan kebutuhan permintaan pasar.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal46" value="D"> D. Memastikan tenaga kerja memahami alur kerja di pabrik.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 47 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">47. Tujuan utama dari “Smart Distribution” yang ditekankan dalam misi MPOIN adalah untuk...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal47" value="A"> A. Menjamin produk sampai ke tangan konsumen dengan cepat dan aman</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal47" value="B"> B. Mengurangi beban kerja tim distribusi di lapangan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal47" value="C"> C. Menyesuaikan alur pengiriman dengan kapasitas gudang.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal47" value="D"> D. Mempermudah proses evaluasi kinerja logistik.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 48 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">48. “Smart Product” MPOIN memiliki makna mendasar bahwa produk tersebut...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal48" value="A"> A. Lahir dan dikembangkan dari analisis masalah nyata yang ditemukan di lapangan.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal48" value="B"> B. Memiliki spesifikasi teknis yang sesuai dengan standar produk MPOIN</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal48" value="C"> C. Dibuat agar mudah digunakan oleh konsumen dari berbagai latar belakang.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal48" value="D"> D. Dirancang untuk mendukung kelancaran distribusi dan pemasangan.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 49 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">49. Alasan utama MPOIN menekankan perlunya "inovasi relevan" adalah karena...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal49" value="A"> A. Inovasi diperlukan agar MPOIN selalu terlihat modern.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal49" value="B"> B. Inovasi harus selalu lahir dari masalah nyata di lapangan dan kebutuhan konsumen.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal49" value="C"> C. Inovasi membantu memperluas variasi produk tanpa harus mengubah sistem yang ada.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal49" value="D"> D. Inovasi mendorong efisiensi internal agar proses produksi menjadi lebih cepat.</label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 50 -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">50. Warisan (legacy) MPOIN yang dibangun melalui setiap tindakan dan produk ditujukan secara spesifik untuk...</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal50" value="A"> A. Pasar agar MPOIN tetap dikenal dalam persaingan bisnis.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal50" value="B"> B. Pelanggan agar merasa puas setelah menggunakan produk.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal50" value="C"> C. Generasi berikutnya agar melihat contoh kebaikan dan kualitas.</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal50" value="D"> D. Organisasi internal agar sistem kerja tetap berjalan stabil.</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button onclick="lanjutKeMateri2()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg transition cursor-pointer">Lanjut ke Materi PK</button>
+            </div>
+            <!-- STEP 4: MATERI 2 (PK) -->
+            <div id="step-materi-2" class="hidden p-8 sm:p-10">
+                <div class="mb-6">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950 px-3 py-1 rounded-full border border-indigo-800/50">Langkah 4 dari 5</span>
+                    <h2 class="text-2xl font-bold text-white mt-3">Materi 2: Penguasaan Kompetensi (PK)</h2>
+                    <p class="text-slate-400 text-sm mt-1">Pelajari modul PK berikut sebelum mengerjakan 25 soal berikutnya.</p>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-5 mb-6 text-slate-300 text-sm space-y-3">
+                    <p class="font-semibold text-indigo-300">Poin Pembelajaran PK:</p>
+                    <p>1. Penguasaan teknis operasional bidang tugas.</p>
+                    <p>2. Studi kasus pemecahan masalah.</p>
+                </div>
+                <button onclick="lanjutKeSoal2()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg transition cursor-pointer">Mulai Soal PK (No. 26 - 50)</button>
+            </div>
+
+            <!-- STEP 5: SOAL 2 (PK - 25 SOAL, Nomor 26 s.d. 50) -->
+            <div id="step-soal-2" class="hidden p-8 sm:p-10">
+                <div class="mb-6">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950 px-3 py-1 rounded-full border border-indigo-800/50">Langkah 5 dari 5</span>
+                    <h2 class="text-2xl font-bold text-white mt-3">Ujian Bagian 2: PK (25 Soal)</h2>
+                    <p class="text-slate-400 text-sm mt-1">Jawablah pertanyaan tes kompetensi di bawah ini.</p>
+                </div>
+
+                <div class="space-y-6 max-h-96 overflow-y-auto pr-2 mb-6">
+                    <!-- SOAL 26 sampai 50 (Contoh buat nomor 26 & 27, silakan diduplikasi sampai 50) -->
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">26. Pertanyaan PK nomor 26?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="A"> A. Pilihan A</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="B"> B. Pilihan B</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="C"> C. Pilihan C</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal26" value="D"> D. Pilihan D</label>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                        <p class="font-semibold text-slate-200 mb-3">27. Pertanyaan PK nomor 27?</p>
+                        <div class="space-y-2 text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="A"> A. Pilihan A</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="B"> B. Pilihan B</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="C"> C. Pilihan C</label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="soal27" value="D"> D. Pilihan D</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="kirimSemuaJawaban()" id="btn-submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg transition cursor-pointer">Selesai & Kirim Seluruh Ujian</button>
+            </div>
+
+            <!-- STEP 6: SELESAI & HASIL -->
+            <div id="step-selesai" class="hidden p-8 sm:p-10 text-center">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl shadow-inner">✓</div>
+                <h2 class="text-2xl font-bold text-white mb-2">Ujian Selesai!</h2>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Seluruh 50 soal telah diselesaikan dan nilai berhasil dikirim ke sistem.</p>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-5 mb-6 text-left space-y-3 text-sm">
+                    <div class="flex justify-between items-center pb-2 border-b border-slate-800/80">
+                        <span class="text-slate-400">Total Nilai Akhir (50 Soal):</span>
+                        <span id="res-score" class="font-mono font-bold text-emerald-400 text-xl">-</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-400">Token Digunakan:</span>
+                        <span id="res-token" class="font-mono font-bold text-indigo-400">-</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-400">Waktu Pengiriman:</span>
+                        <span id="res-time" class="font-mono text-slate-300">-</span>
+                    </div>
+                </div>
+                <button onclick="location.reload()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg border border-slate-700 transition cursor-pointer">Keluar / Selesai</button>
+            </div>
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
